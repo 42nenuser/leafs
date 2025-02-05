@@ -87,12 +87,6 @@ curl -X 'POST' \
 - **Performance Monitoring & Analysis:**
   - Tracked training metrics to detect overfitting and optimize training.
 
-## Resources
-- **PlantVillage Dataset:** [Kaggle Link](https://www.kaggle.com/arjuntejaswi/plant-village)
-- **TensorFlow Image Classification Guide:** [TensorFlow Docs](https://www.tensorflow.org/tutorials/images/classification)
-- **Data Augmentation Techniques:** [Keras Documentation](https://keras.io/guides/preprocessing_layers/)
-- **FastAPI Framework:** [FastAPI Docs](https://fastapi.tiangolo.com/)
-
 ## License
 This project is for educational purposes and follows best practices in **machine learning and model deployment**.
 
