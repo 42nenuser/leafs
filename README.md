@@ -1,20 +1,17 @@
-
 # Leaf Disease Classification
 
-
-![Alt text](disease_class1.png)
-
+![Leaf Disease Classification](disease_class1.png)
 
 ## Introduction
-This project is focused on **training a deep learning model** to classify **vegetable leaf diseases** using **convolutional neural networks (CNNs)**. The model is trained to detect three classes: **Early blight fungus, late blight fungus, and Healthy leaves**. The dataset is preprocessed, augmented, and trained using TensorFlow. The trained model is then used for inference via a FastAPI backend.
+This project focuses on **training a deep learning model** to classify **vegetable leaf diseases** using **convolutional neural networks (CNNs)**. The model is trained to detect three classes: **Early Blight Fungus, Late Blight Fungus, and Healthy Leaves**. The dataset is **preprocessed, augmented, and trained** using TensorFlow. The trained model is deployed for inference via a **FastAPI backend**, with a frontend interface for user interaction.
 
 ## Model Training Process
 ### **1. Dataset & Preprocessing**
 - **Dataset:** `PlantVillage` dataset containing **2152 images**.
 - **Classes:**
-  - `Early blight fungus`
-  - `late blight fungus`
-  - `Potato___healthy`
+  - **Early Blight Fungus**
+  - **Late Blight Fungus**
+  - **Healthy Leaves**
 - **Preprocessing Steps:**
   - Images are loaded using `image_dataset_from_directory()`.
   - Resized to **256x256** and converted to tensors.
@@ -25,13 +22,13 @@ This project is focused on **training a deep learning model** to classify **vege
     - **10% Testing**
 
 ### **2. Data Augmentation**
-- Applied augmentation to improve generalization:
-  - **Random Flipping** (horizontal and vertical).
-  - **Random Rotation** (±20 degrees).
-  - **Rescaling** using `tf.keras.layers.experimental.preprocessing`.
+To improve model generalization and reduce overfitting:
+- **Random Flipping** (horizontal and vertical).
+- **Random Rotation** (±20 degrees).
+- **Rescaling** using `tf.keras.layers.experimental.preprocessing`.
 
 ### **3. Model Architecture**
-The model is a **Convolutional Neural Network (CNN)**:
+The model is based on a **Convolutional Neural Network (CNN)**:
 - **6 Convolutional Layers** with `ReLU` activation.
 - **MaxPooling Layers** to reduce spatial dimensions.
 - **Fully Connected (Dense) Layers** with Softmax activation.
@@ -48,51 +45,51 @@ The model is a **Convolutional Neural Network (CNN)**:
 
 ### **5. Visualizing Model Performance**
 - Plotted **accuracy and loss curves** to track model training.
-- Analyzed **confusion matrix** for classification performance.
+- Analyzed **confusion matrix** to assess classification performance.
 
 ## Future Improvements
-- **Expand the model** to classify diseases in other leaf types.
-- **Enhance visualizations** to better understand model decisions.
-- **Optimize model for deployment** on edge devices or cloud.
-- **Integrate a frontend** to provide a user-friendly interface.
+- **Expand the model** to classify diseases in other plant species.
+- **Enhance visualizations** for better interpretability of model decisions.
+- **Optimize the model for deployment** on edge devices or cloud services.
+- **Develop a frontend interface** for seamless user interaction.
 
-## Here are the steps to run the application:
-Navigate to the project root directory
+## Running the Application
+### **1. Backend Setup**
+Navigate to the project root directory and activate the virtual environment:
+```sh
 cd /path/to/your/project
-
-# Activate your virtual environment
 source venv/bin/activate
-
-# Install backend dependencies
+```
+Install dependencies and run the FastAPI backend:
+```sh
 pip install -r api/requirements.txt
-
-# Run the FastAPI server
 cd api
 python main.py
+```
 
-Frontend Setup:
-Since this is a static frontend, you'll want to serve it using a simple local server:
-# From the project root
+### **2. Frontend Setup**
+Since this is a static frontend, serve it using a local server:
+```sh
 cd frontend
 python -m http.server 5000  # Serves on port 5000
+```
 
-Important Notes:
-
-Ensure your virtual environment is activated
-Make sure all dependencies are installed
-The backend expects the model to be at ../saved_models/3
-The frontend makes API calls to http://localhost:8000/predict
-
+### **3. Important Notes**
+- Ensure your **virtual environment** is activated.
+- Make sure all **dependencies** are installed.
+- The backend expects the trained **model to be located at** `../saved_models/3`.
+- The frontend makes API calls to `http://localhost:8000/predict`.
 
 ## Learning Outcomes
 - **Deep Learning for Image Classification:**
-  - Improved model training strategies for **high-accuracy classification**.
+  - Implemented **high-accuracy classification** techniques.
 - **Data Augmentation & Preprocessing:**
-  - Utilized **TensorFlow/Keras layers** for enhanced model performance.
+  - Applied **TensorFlow/Keras preprocessing layers** for better model generalization.
 - **Performance Monitoring & Analysis:**
-  - Tracked training metrics to detect overfitting and optimize training.
+  - Tracked training metrics and evaluated **confusion matrices** to improve performance.
 
 ## License
-This project is for educational purposes and follows best practices in **machine learning and model deployment**.
+This project is intended for **educational purposes** and follows best practices in **machine learning and model deployment**.
 
 ---
+
