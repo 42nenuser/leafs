@@ -1,117 +1,73 @@
-
-# Leaf Disease Classification API
+# Leaf Disease Classification
 
 ## Introduction
-This project is a **FastAPI-based web service** for **potato leaf disease classification** using a **deep learning model**. The API processes uploaded images and predicts whether a leaf is **Healthy or not**. The backend is designed for real-time inference and can be easily integrated with a frontend application.
+This project is focused on **training a deep learning model** to classify **vegetable leaf diseases** using **convolutional neural networks (CNNs)**. The model is trained to detect three classes: **Early Blight, Late Blight, and Healthy leaves**. The dataset is preprocessed, augmented, and trained using TensorFlow. The trained model is then used for inference via a FastAPI backend.
 
-## Features
-### **1. API Endpoints**
-#### **Health Check**
-- **Endpoint:** `GET /ping`
-- **Response:**
-  ```json
-  "Hello, I am alive"
-  ```
-- **Purpose:** Used to check if the server is running.
-
-#### **Leaf Disease Prediction**
-- **Endpoint:** `POST /predict`
-- **Request:**
-  - Accepts an **image file** (PNG, JPG, JPEG)
-- **Response:**
-  ```json
-  {
-      "class": "Early Blight",
-      "confidence": 0.98
-  }
-  ```
-- **Purpose:**
-  - Reads the image, processes it, and predicts the disease class.
-  - Returns the predicted label and confidence score.
-
-### **2. Model Details**
-- **Model Path:** `../saved_models/3`
-- **Framework:** TensorFlow
+## Model Training Process
+### **1. Dataset & Preprocessing**
+- **Dataset:** `PlantVillage` dataset containing **2152 images**.
 - **Classes:**
-  - `Early Blight`
-  - `Late Blight`
-  - `Healthy`
+  - `Potato___Early_blight`
+  - `Potato___Late_blight`
+  - `Potato___healthy`
+- **Preprocessing Steps:**
+  - Images are loaded using `image_dataset_from_directory()`.
+  - Resized to **256x256** and converted to tensors.
+  - Normalized (pixel values scaled between `0` and `1`).
+  - Dataset split:
+    - **80% Training**
+    - **10% Validation**
+    - **10% Testing**
 
-### **3. CORS Configuration**
-- **Allows requests from:**
-  - `http://localhost`
-  - `http://localhost:3000`
-  - Currently set to allow **all origins** for debugging.
+### **2. Data Augmentation**
+- Applied augmentation to improve generalization:
+  - **Random Flipping** (horizontal and vertical).
+  - **Random Rotation** (±20 degrees).
+  - **Rescaling** using `tf.keras.layers.experimental.preprocessing`.
+
+### **3. Model Architecture**
+The model is a **Convolutional Neural Network (CNN)**:
+- **6 Convolutional Layers** with `ReLU` activation.
+- **MaxPooling Layers** to reduce spatial dimensions.
+- **Fully Connected (Dense) Layers** with Softmax activation.
+- **Categorical Crossentropy Loss** and `Adam` Optimizer.
+
+### **4. Training & Evaluation**
+- **Optimizer:** Adam
+- **Loss Function:** Sparse Categorical Crossentropy
+- **Epochs:** 50
+- **Results:**
+  - **Training Accuracy:** ~99%
+  - **Validation Accuracy:** ~97-98%
+  - **Final Test Accuracy:** **100%**
+
+### **5. Visualizing Model Performance**
+- Plotted **accuracy and loss curves** to track model training.
+- Analyzed **confusion matrix** for classification performance.
 
 ## Future Improvements
-- **Frontend Integration:** A frontend interface will be added for user-friendly interaction.
-- **Expanded Model Scope:** The model will be improved to classify diseases in other types of leaves beyond potatoes.
-- **Enhanced Visualizations:** Additional visualizations will be developed to better understand the model training process and feature importance.
+- **Expand the model** to classify diseases in other leaf types.
+- **Enhance visualizations** to better understand model decisions.
+- **Optimize model for deployment** on edge devices or cloud.
+- **Integrate a frontend** to provide a user-friendly interface.
 
-## Requirements
-- **Python Libraries:**
-  - FastAPI
-  - Uvicorn
-  - TensorFlow
-  - NumPy
-  - Pillow (PIL for image processing)
-
-## Installation & Setup
-1. **Clone the repository**
-   ```sh
-   git clone https://github.com/your-repo/leaf-disease-api.git
-   cd leaf-disease-api
-   ```
-2. **Create a virtual environment** (optional but recommended)
-   ```sh
-   python3 -m venv venv
-   source venv/bin/activate  # On Windows use `venv\Scripts\activate`
-   ```
-3. **Install dependencies**
-   ```sh
-   pip install -r requirements.txt
-   ```
-4. **Run the API server**
-   ```sh
-   uvicorn main:app --host localhost --port 8000
-   ```
-
-## Usage
-### **1. Test with cURL**
-```sh
-curl -X 'POST' \
-  'http://localhost:8000/predict' \
-  -H 'accept: application/json' \
-  -H 'Content-Type: multipart/form-data' \
-  -F 'file=@path/to/image.jpg'
-```
-
-### **2. Test with Postman**
-- Select **POST** request.
-- Set URL: `http://localhost:8000/predict`
-- Upload an **image file** in the `form-data` section.
-- Send the request and receive the prediction.
-
-## Deployment
-- **Local Deployment:** Run the API using `uvicorn`.
-- **Docker Deployment:**
-  1. Create a `Dockerfile`.
-  2. Build the image:
-     ```sh
-     docker build -t leaf-disease-api .
-     ```
-  3. Run the container:
-     ```sh
-     docker run -p 8000:8000 leaf-disease-api
-     ```
+## API Backend 
+- **Framework:** FastAPI
+- **Endpoints:**
+  - `GET /ping` → Health check.
+  - `POST /predict` → Uploads an image and returns classification.
+- **Deployment:**
+  - Local: `uvicorn main:app --host localhost --port 8000`
+  - Dockerized for portability (future addition)
 
 ## Learning Outcomes
-- **Machine Learning Inference:** Implemented a **FastAPI backend** for real-time predictions.
-- **Computer Vision:** Integrated **TensorFlow** for image-based classification.
-- **API Development:** Built a REST API for model interaction.
-- **Deployment & Scalability:** Designed API for **Dockerized deployment**.
+- **Deep Learning for Image Classification:**
+  - Improved model training strategies for **high-accuracy classification**.
+- **Data Augmentation & Preprocessing:**
+  - Utilized **TensorFlow/Keras layers** for enhanced model performance.
+- **Performance Monitoring & Analysis:**
+  - Tracked training metrics to detect overfitting and optimize training.
 
 ## License
-This project is for educational purposes and follows best practices in **machine learning deployment**.
+This project is for educational purposes and follows best practices in **machine learning and model deployment**.
 
----
