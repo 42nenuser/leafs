@@ -12,8 +12,8 @@ This project is focused on **training a deep learning model** to classify **vege
 ### **1. Dataset & Preprocessing**
 - **Dataset:** `PlantVillage` dataset containing **2152 images**.
 - **Classes:**
-  - `Potato___Early_blight`
-  - `Potato___Late_blight`
+  - `Early blight fungus`
+  - `late blight fungus`
   - `Potato___healthy`
 - **Preprocessing Steps:**
   - Images are loaded using `image_dataset_from_directory()`.
