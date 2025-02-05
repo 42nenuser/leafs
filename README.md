@@ -1,7 +1,7 @@
 # Leaf Disease Classification
 
 ## Introduction
-This project is focused on **training a deep learning model** to classify **vegetable leaf diseases** using **convolutional neural networks (CNNs)**. The model is trained to detect three classes: **Early Blight, Late Blight, and Healthy leaves**. The dataset is preprocessed, augmented, and trained using TensorFlow. The trained model is then used for inference via a FastAPI backend.
+This project is focused on **training a deep learning model** to classify **potato leaf diseases** using **convolutional neural networks (CNNs)**. The model is trained to detect three classes: **Early Blight, Late Blight, and Healthy leaves**. The dataset is preprocessed, augmented, and trained using TensorFlow. The trained model is then used for inference via a FastAPI backend.
 
 ## Model Training Process
 ### **1. Dataset & Preprocessing**
@@ -51,14 +51,33 @@ The model is a **Convolutional Neural Network (CNN)**:
 - **Optimize model for deployment** on edge devices or cloud.
 - **Integrate a frontend** to provide a user-friendly interface.
 
-## API Backend 
+## API Backend (Brief Overview)
+
+### Example API Call
+To test the API, you can use `cURL` or Postman:
+
+#### **Using cURL:**
+```sh
+curl -X 'POST' \
+  'http://localhost:8000/predict' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: multipart/form-data' \
+  -F 'file=@path/to/leaf_image.jpg'
+```
+#### **Example JSON Response:**
+```json
+{
+  "class": "Early Blight",
+  "confidence": 0.98
+}
+```
 - **Framework:** FastAPI
 - **Endpoints:**
   - `GET /ping` → Health check.
   - `POST /predict` → Uploads an image and returns classification.
 - **Deployment:**
   - Local: `uvicorn main:app --host localhost --port 8000`
-  - Dockerized for portability (future addition)
+  - Dockerized for portability.
 
 ## Learning Outcomes
 - **Deep Learning for Image Classification:**
@@ -68,6 +87,13 @@ The model is a **Convolutional Neural Network (CNN)**:
 - **Performance Monitoring & Analysis:**
   - Tracked training metrics to detect overfitting and optimize training.
 
+## Resources
+- **PlantVillage Dataset:** [Kaggle Link](https://www.kaggle.com/arjuntejaswi/plant-village)
+- **TensorFlow Image Classification Guide:** [TensorFlow Docs](https://www.tensorflow.org/tutorials/images/classification)
+- **Data Augmentation Techniques:** [Keras Documentation](https://keras.io/guides/preprocessing_layers/)
+- **FastAPI Framework:** [FastAPI Docs](https://fastapi.tiangolo.com/)
+
 ## License
 This project is for educational purposes and follows best practices in **machine learning and model deployment**.
 
+---
