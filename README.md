@@ -51,33 +51,33 @@ The model is a **Convolutional Neural Network (CNN)**:
 - **Optimize model for deployment** on edge devices or cloud.
 - **Integrate a frontend** to provide a user-friendly interface.
 
-## API Backend (Brief Overview)
+## Here are the steps to run the application:
+Navigate to the project root directory
+cd /path/to/your/project
 
-### Example API Call
-To test the API, you can use `cURL` or Postman:
+# Activate your virtual environment
+source venv/bin/activate
 
-#### **Using cURL:**
-```sh
-curl -X 'POST' \
-  'http://localhost:8000/predict' \
-  -H 'accept: application/json' \
-  -H 'Content-Type: multipart/form-data' \
-  -F 'file=@path/to/leaf_image.jpg'
-```
-#### **Example JSON Response:**
-```json
-{
-  "class": "Early Blight",
-  "confidence": 0.98
-}
-```
-- **Framework:** FastAPI
-- **Endpoints:**
-  - `GET /ping` → Health check.
-  - `POST /predict` → Uploads an image and returns classification.
-- **Deployment:**
-  - Local: `uvicorn main:app --host localhost --port 8000`
-  - Dockerized for portability.
+# Install backend dependencies
+pip install -r api/requirements.txt
+
+# Run the FastAPI server
+cd api
+python main.py
+
+Frontend Setup:
+Since this is a static frontend, you'll want to serve it using a simple local server:
+# From the project root
+cd frontend
+python -m http.server 5000  # Serves on port 5000
+
+Important Notes:
+
+Ensure your virtual environment is activated
+Make sure all dependencies are installed
+The backend expects the model to be at ../saved_models/3
+The frontend makes API calls to http://localhost:8000/predict
+
 
 ## Learning Outcomes
 - **Deep Learning for Image Classification:**
