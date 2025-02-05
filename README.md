@@ -2,10 +2,12 @@
 # Leaf Disease Classification
 
 
-![Alt text](disease_class1.png)
+![Alt text](early_blight.png)
+
+![Alt text](healthy.png)
 
 ## Introduction
-This project is focused on **training a deep learning model** to classify **potato leaf diseases** using **convolutional neural networks (CNNs)**. The model is trained to detect three classes: **Early Blight, Late Blight, and Healthy leaves**. The dataset is preprocessed, augmented, and trained using TensorFlow. The trained model is then used for inference via a FastAPI backend.
+This project is focused on **training a deep learning model** to classify **potato leaf diseases** using **convolutional neural networks (CNNs)**. The model is trained to detect three classes: **Early blight fungus, late blight fungus, and Healthy leaves**. The dataset is preprocessed, augmented, and trained using TensorFlow. The trained model is then used for inference via a FastAPI backend.
 
 ## Model Training Process
 ### **1. Dataset & Preprocessing**
