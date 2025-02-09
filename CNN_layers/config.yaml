@@ -1,9 +1,0 @@
-model_params:
-  input_channels: 3
-  num_classes: 10
-  hidden_units: 512
-
-training:
-  batch_size: 64
-  epochs: 20
-  learning_rate: 0.001
