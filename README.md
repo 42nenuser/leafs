@@ -84,25 +84,5 @@ python -m http.server 5000  # Serves on port 5000
 - The backend expects the trained **model to be located at** `../saved_models/3`.
 - The frontend makes API calls to `http://localhost:8000/predict`.
 
-## Learning Outcomes
-- **Deep Learning for Image Classification:**
-  - Implemented **high-accuracy classification** techniques.
-- **Data Augmentation & Preprocessing:**
-  - Applied **TensorFlow/Keras preprocessing layers** for better model generalization.
-- **Performance Monitoring & Analysis:**
-  - Tracked training metrics and evaluated **confusion matrices** to improve performance.
 
-## concepts used in this project
-
-- **Convolutional Neural Networks (CNNs):** [Wikipedia](https://en.wikipedia.org/wiki/Convolutional_neural_network)
-- **Data Augmentation:** [Wikipedia](https://en.wikipedia.org/wiki/Data_augmentation)
-- **Activation Functions (ReLU, Softmax):** [Wikipedia](https://en.wikipedia.org/wiki/Activation_function)
-- **Optimization Algorithms (Adam Optimizer):** [Wikipedia](https://en.wikipedia.org/wiki/Stochastic_gradient_descent#Adam)
-- **Loss Functions (Categorical Crossentropy):** [Wikipedia](https://en.wikipedia.org/wiki/Loss_function)
-- **Confusion Matrix Analysis:** [Wikipedia](https://en.wikipedia.org/wiki/Confusion_matrix)
-
-## License
-This project is intended for **educational purposes** and follows best practices in **machine learning and model deployment**.
-
----
 
