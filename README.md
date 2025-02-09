@@ -2,6 +2,10 @@
 
 ![Leaf Disease Classification](disease_class1.png)
 
+![Leaf Disease Classification](leafs.png)
+
+![Leaf Disease Classification](CNN.png)
+
 ## Introduction
 This project focuses on **training a deep learning model** to classify **vegetable leaf diseases** using **convolutional neural networks (CNNs)**. The model is trained to detect three classes: **Early Blight Fungus, Late Blight Fungus, and Healthy Leaves**. The dataset is **preprocessed, augmented, and trained** using TensorFlow. The trained model is deployed for inference via a **FastAPI backend**, with a frontend interface for user interaction.
 
